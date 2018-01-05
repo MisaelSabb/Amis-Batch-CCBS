@@ -5,7 +5,7 @@ function LIB_FUNC(){AmisLib.Utility.LIB_FUNC.apply(this, arguments);}
 function doGet(e) {
   return HtmlService
     .createHtmlOutputFromFile('forms.html')
-    .setTitle("IGC PRICE INDICATORS UPLOAD");
+    .setTitle("AMIS CCBS UPLOAD");
 }
 
 function uploadFileToGoogleDrive(data, file, name, email,userToken, uid) {
