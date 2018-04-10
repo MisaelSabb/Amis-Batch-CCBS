@@ -1,4 +1,3 @@
-
 function LIB_FUNC(){AmisLib.Utility.LIB_FUNC.apply(this, arguments);}
 
 /* The script is deployed as a web app and renders the form */
@@ -8,7 +7,7 @@ function doGet(e) {
     .setTitle("AMIS CCBS UPLOAD");
 }
 
-function uploadFileToGoogleDrive(data, file, name, email,userToken, uid) {
+function uploadFileToGoogleDrive(data, file, userToken) {
   
   try {
 
@@ -30,9 +29,17 @@ function uploadFileToGoogleDrive(data, file, name, email,userToken, uid) {
     
     var csvData = Utilities.parseCsv(fileUploaded.getBlob().getDataAsString());
     
-    CsvUtility.elaborateData(userToken,uid, csvData);  
+    var elaborationResult= CsvUtility.elaborateData(userToken, csvData);  
     
-    return "OK";
+    
+    if(elaborationResult.result){
+      //call ETL PROCESS
+      ETLCaller.runETLJob();
+    }
+    
+    elaborationResult.result ? elaborationResult.text='Data Uploaded Successfully. Please close the browser.' : elaborationResult.text='';
+    
+    return elaborationResult;
 
   } catch (f) {
     return f.toString();
