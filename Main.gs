@@ -37,6 +37,10 @@ function uploadFileToGoogleDrive(data, file, userToken) {
       ETLCaller.runETLJob();
       
       ETLCaller.runCloudETLJob();
+      
+      ETLCaller.runETLJobPopulation();
+      
+      ETLCaller.runCloudETLJobPopulation();
     }
     
     elaborationResult.result ? elaborationResult.text='Data Uploaded Successfully. Please close the browser.' : elaborationResult.text='';

@@ -34,5 +34,39 @@ var ETLCaller = new function() {
        Logger.log(resp);
        Logger.log(resp.getResponseCode());       
  	} 
+    
+    /**
+	 * call the ETL Jobs
+	 * @param  {string} countryLabel label of the country
+	 * @return  NO RETURN	 
+	 */
+	 this.runETLJobPopulation = function() {
+       var options={
+         'method' : 'post',
+         'contentType': 'application/json',         
+         'payload' : JSON.stringify({"jobNameAndParameters":Config.ETLjobNameAndParametersPopulation})
+       };
+
+       var resp= UrlFetchApp.fetch( Config.ETLEndpoints, options );
+       Logger.log(resp);
+       Logger.log(resp.getResponseCode());       
+ 	} 
+     /**
+	 * call the ETL cloud Jobs
+	 * @param  {string} countryLabel label of the country
+	 * @return  NO RETURN	 
+	 */
+	 this.runCloudETLJobPopulation = function() {
+       var options={
+         'method' : 'post',
+         'contentType': 'application/json',         
+         'payload' : JSON.stringify({"jobNameAndParameters":Config.ETLjobNameAndParametersPopulation})
+       };
+
+       var resp= UrlFetchApp.fetch( Config.ETLCloudEndpoints, options );
+       Logger.log(resp);
+       Logger.log(resp.getResponseCode());       
+ 	}  
+     
      
 };

@@ -23,5 +23,11 @@ var Config={
 	 * ETL ETLCloudEndpoints
 	 * @type {String}
 	 */	
-    ETLCloudEndpoints:""
+    ETLCloudEndpoints:"",
+     /**
+	 * ETL ETLjobNameAndParametersPopulation
+	 * @type {String}
+	 */	
+    ETLjobNameAndParametersPopulation:""
+  
 };
